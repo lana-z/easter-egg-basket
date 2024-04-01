@@ -45,7 +45,7 @@ a {
   cursor: pointer;
 }
 
-#basket {
+/* #basket {
   position: absolute;
   bottom: 30%;
   left: 0;
@@ -53,10 +53,26 @@ a {
   margin-left: auto;  /* Center the basket */
   margin-right: auto;   
   width: 60%;  /* Eggs sit in 60% of the image*/
-  height: 200px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: flex-end;  /* Eggs go into basket at the bottom of the basket container lol gravity*/
+  flex-wrap: wrap;
+  padding: 2px;
+} */
+
+#basket {
+  position: absolute;
+  bottom: 30%;
+  left: 0;
+  right: 0;
+  margin-left: auto;  /* Center the basket */
+  margin-right: auto;
+  width: 60%;  /* Eggs sit in 60% of the image */
+  min-height: 10%; /* Adjust based on the basket image's height */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;  /* Eggs go into basket at the bottom */
   flex-wrap: wrap;
   padding: 2px;
 }

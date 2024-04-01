@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easter Egg Hunt</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <img src="assets/happy-easter.png" alt="Happy Easter">
+  </header>
+  <main>
+    <p>Collect the eggs in the basket to see what's in them.</p>
+
+    <div id="egg-container">
+      <img class="egg" id="egg1" src="assets/egg1.png" draggable="true" alt="Egg 1">
+      <img class="egg" id="egg2" src="assets/egg2.png" draggable="true" alt="Egg 2">
+      <img class="egg" id="egg3" src="assets/egg3.png" draggable="true" alt="Egg 3">
+      <img class="egg" id="egg4" src="assets/egg4.png" draggable="true" alt="Egg 4">
+      <img class="egg" id="egg8" src="assets/egg8.png" draggable="true" alt="Egg 5">
+      <img class="egg" id="egg6" src="assets/egg6.png" draggable="true" alt="Egg 6">
+      <img class="egg" id="egg7" src="assets/egg7.png" draggable="true" alt="Egg 7">
+      <img class="egg" id="egg5" src="assets/egg5.png" draggable="true" alt="Egg 8">
+    </div>
+
+    <div class="basket-wrapper">
+      <div id="basket-image">
+          <img id="basket-img" src="assets/easter-basket-purple.png" alt="Basket">
+      </div>
+      <div id="basket">
+          <!-- Eggs go in basket here -->
+      </div>
+    </div>
+
+    <!-- Modal for showing egg contents -->
+    <div id="egg-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="egg-content">Egg content goes here...</p>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>© 2024 Easter Egg Hunt <a href="https://www.linkedin.com/in/lanazumbrunn/">by Lana Z</a></p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>

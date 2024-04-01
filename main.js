@@ -1,5 +1,4 @@
-import './style.css'
-import './script.js'
+import './style.css';
 import { injectSpeedInsights } from '@vercel/speed-insights';
  
 injectSpeedInsights();

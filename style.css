@@ -45,36 +45,12 @@ a {
   cursor: pointer;
 }
 
-/* #basket {
-  position: absolute;
-  bottom: 30%;
-  left: 0;
-  right: 0;   
-  margin-left: auto;  /* Center the basket */
-  margin-right: auto;   
-  width: 60%;  /* Eggs sit in 60% of the image*/
-  height: 400px;
+.basket-wrapper {
   display: flex;
   justify-content: center;
-  align-items: flex-end;  /* Eggs go into basket at the bottom of the basket container lol gravity*/
-  flex-wrap: wrap;
-  padding: 2px;
-} */
-
-#basket {
-  position: absolute;
-  bottom: 30%;
-  left: 0;
-  right: 0;
-  margin-left: auto;  /* Center the basket */
-  margin-right: auto;
-  width: 60%;  /* Eggs sit in 60% of the image */
-  min-height: 10%; /* Adjust based on the basket image's height */
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;  /* Eggs go into basket at the bottom */
-  flex-wrap: wrap;
-  padding: 2px;
+  position: relative;
+  width: fit-content;
+  margin: auto;
 }
 
 #basket-image {
@@ -84,18 +60,24 @@ a {
   width: 100%;
 }
 
-.basket-wrapper {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  width: fit-content;
-  margin: auto;
-}
-
 #basket-image img {
   max-width: 500px; 
   height: auto; 
   margin: 0 auto; /* Center the image within its container */
+}
+
+#basket {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;  /* Eggs sit in 60% of the image */
+  min-height: 20%; /* Adjust based on the basket image's height */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;  /* Eggs go into basket at the bottom */
+  flex-wrap: wrap;
+  padding: 2px;
 }
 
 #basket .egg {

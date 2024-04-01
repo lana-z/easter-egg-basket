@@ -13,5 +13,5 @@ I used ChatGPT for assistance.
 **Change Log**
 
 Mar 31, 2024 - started project
-Mar 31 - TODO js error when deployed on vercel
-
+Mar 31 - js error when deployed on vercel
+April 1 - js error fixed

@@ -61,9 +61,10 @@ a {
 }
 
 #basket-image img {
-  max-width: 500px; 
-  height: auto; 
-  margin: 0 auto; /* Center the image within its container */
+  max-width: 500px;
+  height: auto;
+  margin: 0 auto;
+  /* Center the image within its container */
 }
 
 #basket {
@@ -71,11 +72,14 @@ a {
   bottom: 30%;
   left: 50%;
   transform: translateX(-50%);
-  width: 50%;  /* Eggs sit in 60% of the image */
-  min-height: 20%; /* Adjust based on the basket image's height */
+  width: 50%;
+  /* Eggs sit in 60% of the image */
+  min-height: 20%;
+  /* Adjust based on the basket image's height */
   display: flex;
   justify-content: center;
-  align-items: flex-end;  /* Eggs go into basket at the bottom */
+  align-items: flex-end;
+  /* Eggs go into basket at the bottom */
   flex-wrap: wrap;
   padding: 2px;
 }
@@ -92,32 +96,41 @@ a {
   z-index: 1;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  width: fit-content;
+  height: fit-content;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.1);
+  /* Mostly transparent */
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Slightly transparent background */
+  margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
-  border-radius: 10px;
+  width: 180px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1px;
+  box-sizing: border-box;
 }
 
 .close {
-  color: #aaaaaa;
-  float: right;
+  color: purple;
+  position: absolute;
+  top: 10px;
+  right: 20px;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
   color: #000;
-  text-decoration: none;
   cursor: pointer;
 }
 
@@ -141,4 +154,3 @@ a {
     height: 80px;
   }
 }
-

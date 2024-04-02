@@ -3,20 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const basket = document.getElementById('basket');
 
   const candyImages = [
-    '/assets/cadbury-creme-egg.png',
-    '/assets/caramel-egg.png',
-    '/assets/coconut-creme-egg.png',
-    '/assets/cookies-and-cream-eggs.png',
-    '/assets/dark-choc-bunny.png',
-    '/assets/dream-bunny.png',
-    '/assets/jelly-beans.png',
-    '/assets/marshmallow-choc-bunny.png',
-    '/assets/milk-choc-eggs.png',
-    '/assets/peeps-rainbow-bunny.png',
-    '/assets/peeps.png',
-    '/assets/reeses-pb-egg.png',
-    '/assets/robin-eggs.png',
-    '/assets/sour-patch.png',
+    'assets/cadbury-creme-egg.png',
+    'assets/caramel-egg.png',
+    'assets/coconut-creme-egg.png',
+    'assets/cookies-and-cream-eggs.png',
+    'assets/dark-choc-bunny.png',
+    'assets/dream-bunny.png',
+    'assets/jelly-beans.png',
+    'assets/marshmallow-choc-bunny.png',
+    'assets/milk-choc-eggs.png',
+    'assets/peeps-rainbow-bunny.png',
+    'assets/peeps.png',
+    'assets/reeses-pb-egg.png',
+    'assets/robin-eggs.png',
+    'assets/sour-patch.png',
   ];
 
   function showCandy() {

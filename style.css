@@ -23,6 +23,7 @@ p {
   text-align: center;
   font-style: italic;
   color: #fff;
+  font-size: larger;
 }
 
 a {
@@ -94,23 +95,15 @@ a {
   display: none;
   position: fixed;
   z-index: 1;
-  left: 0;
-  top: 0;
-  width: fit-content;
-  height: fit-content;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.1);
-  /* Mostly transparent */
 }
 
 .modal-content {
-  background-color: rgba(255, 255, 255, 0.9);
-  /* Slightly transparent background */
+  background-color: pink;
   margin: 10% auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #888;
   width: 180px;
-  height: 240px;
+  height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,7 +112,7 @@ a {
 }
 
 .close {
-  color: purple;
+  color: lightblue;
   position: absolute;
   top: 10px;
   right: 20px;
@@ -130,7 +123,7 @@ a {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: grey;
   cursor: pointer;
 }
 

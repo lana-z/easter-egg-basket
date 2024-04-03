@@ -1,55 +1,22 @@
-// import cadburyCremeEgg from './assets/cadbury-creme-egg.png';
-// import caramelEgg from './assets/caramel-egg.png';
-// import coconutCremeEgg from './assets/coconut-creme-egg.png';
-// import cookiesAndCreamEggs from './assets/cookies-and-cream-eggs.png';
-// import darkChocBunny from './assets/dark-choc-bunny.png';
-// import dreamBunny from './assets/dream-bunny.png';
-// import jellyBeans from './assets/jelly-beans.png';
-// import marshmallowChocBunny from './assets/marshmallow-choc-bunny.png';
-// import milkChocEggs from './assets/milk-choc-eggs.png';
-// import peepsRainbowBunny from './assets/peeps-rainbow-bunny.png';
-// import peeps from './assets/peeps.png';
-// import reesesPbEgg from './assets/reeses-pb-egg.png';
-// import robinEggs from './assets/robin-eggs.png';
-// import sourPatch from './assets/sour-patch.png';
-
-
 document.addEventListener('DOMContentLoaded', () => {
   const eggs = document.querySelectorAll('.egg');
   const basket = document.getElementById('basket');
 
   const candyImages = [
-    'assets/cadbury-creme-egg.png',
-    'assets/caramel-egg.png',
-    'assets/coconut-creme-egg.png',
-    'assets/cookies-and-cream-eggs.png',
-    'assets/dark-choc-bunny.png',
-    'assets/dream-bunny.png',
-    'assets/jelly-beans.png',
-    'assets/marshmallow-choc-bunny.png',
-    'assets/milk-choc-eggs.png',
-    'assets/peeps-rainbow-bunny.png',
-    'assets/peeps.png',
-    'assets/reeses-pb-egg.png',
-    'assets/robin-eggs.png',
-    'assets/sour-patch.png',
-  ];
-
-  const candyImages = [
-    cadburyCremeEgg,
-    caramelEgg,
-    coconutCremeEgg,
-    cookiesAndCreamEggs,
-    darkChocBunny,
-    dreamBunny,
-    jellyBeans,
-    marshmallowChocBunny,
-    milkChocEggs,
-    peepsRainbowBunny,
-    peeps,
-    reesesPbEgg,
-    robinEggs,
-    sourPatch,
+    '/assets/cadbury-creme-egg.png',
+    '/assets/caramel-egg.png',
+    '/assets/coconut-creme-egg.png',
+    '/assets/cookies-and-cream-eggs.png',
+    '/assets/dark-choc-bunny.png',
+    '/assets/dream-bunny.png',
+    '/assets/jelly-beans.png',
+    '/assets/marshmallow-choc-bunny.png',
+    '/assets/milk-choc-eggs.png',
+    '/assets/peeps-rainbow-bunny.png',
+    '/assets/peeps.png',
+    '/assets/reeses-pb-egg.png',
+    '/assets/robin-eggs.png',
+    '/assets/sour-patch.png',
   ];
 
   function showCandy() {
@@ -82,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const topPos = Math.random() * maxHeight;
     const leftPos = Math.random() * maxWidth;
 
-  modal.style.top = `${topPos}px`;
-  modal.style.left = `${leftPos}px`;
+    modal.style.top = `${topPos}px`;
+    modal.style.left = `${leftPos}px`;
 
     modalContent.appendChild(closeModal);
     modalContent.appendChild(contentImg);
@@ -124,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     img.addEventListener('click', () => {
       if (!eggContents[img.id]) {
         eggContents[img.id] = showCandy();
-      } 
+      }
 
       showModal(eggContents[img.id]);
     });

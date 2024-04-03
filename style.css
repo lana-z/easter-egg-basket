@@ -32,6 +32,10 @@ a {
   text-decoration: none;
 }
 
+footer {
+  font-size: small;
+}
+
 #egg-container {
   display: flex;
   flex-wrap: wrap;

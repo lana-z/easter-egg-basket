@@ -36,17 +36,25 @@ footer {
   font-size: small;
 }
 
-#egg-container {
+#game { /* DIFFERENCE 1 */
+  background-image: url('/assets/dall-e-img-bkgrnd.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1; 
+  height: 80vh; 
+  width: 100%;
+  margin: auto;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: center;
+
 }
 
 .egg {
+  display: none; 
+  position: absolute;
   width: 60px;
   height: 80px;
-  margin: 10px;
   cursor: pointer;
 }
 
@@ -54,7 +62,6 @@ footer {
   display: flex;
   justify-content: center;
   position: relative;
-  width: fit-content;
   margin: auto;
 }
 
@@ -69,27 +76,27 @@ footer {
   max-width: 500px;
   height: auto;
   margin: 0 auto;
-  /* Center the image within its container */
+  pointer-events: none; 
 }
 
 #basket {
   position: absolute;
-  bottom: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50%;
-  /* Eggs sit in 60% of the image */
-  min-height: 20%;
-  /* Adjust based on the basket image's height */
+  bottom: 30%; /* where the basket sits relative to the bottom of the basket image */
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 60%; /* where eggs sit on basket horizontally */
+  min-height: 20%; /* where eggs sit on basket vertically */
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   align-items: flex-end;
-  /* Eggs go into basket at the bottom */
   flex-wrap: wrap;
-  padding: 2px;
+  z-index: 3; /* above game and basket image, below the eggs */
+  padding: 0;
 }
 
-#basket .egg {
+
+#basket .egg, #basket .basket-egg{
+  position: relative;
   width: 60px;
   height: 80px;
   margin: .5px;
@@ -98,7 +105,7 @@ footer {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 6;
 }
 
 .modal-content {
@@ -131,6 +138,36 @@ footer {
   cursor: pointer;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;  /* Adjust based on your design needs */
+}
+
+#startButton {
+  position: relative;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-color: pink;
+  color: white;
+  background-color: orange;
+}
+
+#scoreBoard {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.timer-display {
+  font-size: 20px;
+  color: #fff; 
+  text-align: center;
+  margin-top: 10px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   #basket {
@@ -150,4 +187,5 @@ footer {
   #greeting img {
     height: 80px;
   }
+
 }

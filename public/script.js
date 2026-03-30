@@ -1,6 +1,85 @@
+let score = 0;
+let round = 1;
+const maxRounds = 3;
+let eggsCollected = 0;
+let eggsVisibleInterval = 3000; // 3 seconds
+let visibilityInterval; 
+let roundTimer;
+let basketArea = {};
+
 document.addEventListener('DOMContentLoaded', () => {
+  const startButton = document.getElementById('startButton');
+  const scoreDisplay = document.getElementById('score');
+  const roundDisplay = document.getElementById('round');
+  const timerDisplay = document.getElementById('timer');
+
   const eggs = document.querySelectorAll('.egg');
   const basket = document.getElementById('basket');
+  const gameDiv = document.getElementById('game');
+  const basketImg = document.getElementById('basket-img');
+
+  basketImg.draggable = false;
+
+  startButton.addEventListener('click', startGame);
+
+  function startGame() {
+    clearInterval(visibilityInterval);
+    clearInterval(roundTimer);
+    score = 0;
+    round = 1;
+    eggsCollected = 0;
+    updateScoreboard();
+    startButton.disabled = true;
+    placeEggs();
+    startRound();
+  }
+
+  function startRound() {
+    clearInterval(visibilityInterval);
+    visibilityInterval = setInterval(toggleEggVisibility, eggsVisibleInterval);
+    startTimer(10); 
+  }
+
+  function startTimer(duration) {
+    let timeLeft = duration;
+    timerDisplay.textContent = `Time Left: ${timeLeft} seconds`; 
+    roundTimer = setInterval(() => {
+      timeLeft--;
+      timerDisplay.textContent = `Time Left: ${timeLeft} seconds`;
+      if (timeLeft <= 0) {
+        clearInterval(roundTimer);
+        clearInterval(visibilityInterval);
+        round++;
+        if (round > maxRounds) {
+          endGame();
+        } else {
+          startNextRound();
+        }
+      }
+    }, 1000);
+  }
+
+  function endGame() {
+    clearInterval(visibilityInterval);
+    clearInterval(roundTimer);
+    startButton.disabled = false;
+    alert('Game Over! Nice hunting, your score is: ' + score);
+    score = 0; // Reset score
+    round = 1; // Reset round
+    updateScoreboard();
+    eggs.forEach(egg => egg.style.display = 'none'); // Hide all eggs
+  }
+
+  function updateScoreboard() {
+    scoreDisplay.textContent = `Score: ${score}`;
+    roundDisplay.textContent = `Round: ${round}`;
+  }
+
+  function startNextRound() {
+    eggsCollected = 0;
+    placeEggs();
+    startRound(); 
+  }
 
   const candyImages = [
     '/assets/cadbury-creme-egg.png',
@@ -66,11 +145,73 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  eggs.forEach(egg => {
-    egg.addEventListener('dragstart', e => {
-      e.dataTransfer.setData('text/plain', e.target.id);
-    });
+  function calculateBasketArea() {
+    const basketRect = basketImg.getBoundingClientRect();
+    const gameRect = gameDiv.getBoundingClientRect();
+    
+    // Calculate basket area relative to the game div
+    basketArea.top = basketRect.top - gameRect.top;
+    basketArea.bottom = basketRect.bottom - gameRect.top;
+    basketArea.height = basketRect.height;
+
+    console.log("Basket area calculated: Top:", basketArea.top, "Bottom:", basketArea.bottom);
+  }
+
+  window.addEventListener('resize', function() {
+    calculateBasketArea();
+    console.log("Window resized, basket area recalculated."); 
   });
+
+  // Randomly place eggs around the game div
+  function placeEggs() {
+    calculateBasketArea();
+    eggs.forEach(egg => {
+        let validPosition = false;
+        let topPos, leftPos;
+        while (!validPosition) {
+            const maxHeight = gameDiv.offsetHeight - egg.offsetHeight;
+            const maxWidth = gameDiv.offsetWidth - egg.offsetWidth;
+            topPos = Math.random() * maxHeight;
+            leftPos = Math.random() * maxWidth;
+            if (topPos < basketArea.top || topPos > basketArea.bottom) {
+              validPosition = true;
+          } else {
+              console.log("Egg position rejected:", topPos);
+          }
+        }
+        egg.style.top = `${topPos}px`;
+        egg.style.left = `${leftPos}px`;
+        egg.style.display = 'none'; 
+    });
+  }
+
+  function toggleEggVisibility() {
+    eggs.forEach(egg => {
+      setTimeout(() => {
+        egg.style.display = egg.style.display === 'none' ? 'block' : 'none';
+        if (egg.style.display === 'block') {
+          const maxHeight = gameDiv.offsetHeight - egg.offsetHeight;
+          const maxWidth = gameDiv.offsetWidth - egg.offsetWidth;
+          const topPos = Math.random() * maxHeight;
+          const leftPos = Math.random() * maxWidth;
+
+          egg.style.top = `${topPos}px`;
+          egg.style.left = `${leftPos}px`;
+
+          // Make the egg draggable only when it is visible
+          egg.setAttribute('draggable', true);
+
+          // Adding dragstart event listener dynamically
+          egg.addEventListener('dragstart', e => {
+            e.dataTransfer.setData('text/plain', e.target.id);
+          });
+        } else {
+          // When egg is hidden, make it not draggable
+          egg.setAttribute('draggable', false);
+        }
+      }, Math.random() * 2000 + 1000); // Random timeout between 1s and 3s for each egg
+    });
+  }
 
   basket.addEventListener('dragover', e => {
     e.preventDefault();
@@ -80,13 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const eggId = e.dataTransfer.getData('text/plain');
     const egg = document.getElementById(eggId);
-
     egg.style.display = 'none';
 
     const img = document.createElement('img');
     img.src = egg.src;
     img.classList.add('egg', 'basket-egg');
-    img.id = egg.id + '-in-basket';
+    img.style.position = 'relative'; // changes to relative after dropped into basket
+    img.style.margin = "1px"; // margin between the eggs
 
     img.addEventListener('click', () => {
       if (!eggContents[img.id]) {
@@ -94,8 +235,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       showModal(eggContents[img.id]);
+
+      eggsCollected++;
+      score += 10; 
+      if (eggsCollected >= eggs.length) {
+        round++;
+        if (round > maxRounds) {
+          endGame();
+        } else {
+          startNextRound();
+        }
+      }
+      updateScoreboard();
     });
 
     basket.appendChild(img);
   });
+
 });

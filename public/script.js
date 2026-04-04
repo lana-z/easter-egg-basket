@@ -18,11 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== Round Config =====
   const ROUNDS = [
-    { duration: 10, visibleWindow: 2000, maxActive: 5, pointsPerEgg: 10 },
-    { duration: 10, visibleWindow: 1500, maxActive: 6, pointsPerEgg: 15 },
-    { duration: 10, visibleWindow: 1200, maxActive: 7, pointsPerEgg: 20 },
-    { duration: 10, visibleWindow: 1000, maxActive: 8, pointsPerEgg: 25 },
-    { duration: 10, visibleWindow: 800, maxActive: 9, pointsPerEgg: 30 },
+    { duration: 8, visibleWindow: 1500, maxActive: 3, pointsPerEgg: 10 },
+    { duration: 8, visibleWindow: 1000, maxActive: 4, pointsPerEgg: 20 },
+    { duration: 8, visibleWindow: 800, maxActive: 5, pointsPerEgg: 30 },
   ];
 
   const CLEAN_SWEEP_BONUS = 50;

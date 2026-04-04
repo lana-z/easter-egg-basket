@@ -1,17 +1,33 @@
-# Easter Egg Basket
+# Easter Egg Hunt
 
-### A simple app for fun on Easter.
+A browser-based Easter egg hunting game. Tap eggs before they disappear, build combos, and collect candy for your basket.
 
-**Author**
+**[Play it here](https://easter-egg-basket.vercel.app/)**
 
- Lana Zumbrunn
+## How it works
 
-**Credit and Collaborations**
+- **5 rounds** of tapping eggs before they disappear
+- Each round gets harder: eggs vanish faster and more appear at once
+- Points per egg increase each round (10, 15, 20, 25, 30)
+- Collect eggs within 1 second of each other for up to a **3x combo multiplier**
+- Each egg gives you a random candy — try to find all 14
+- Your high score is saved locally in the browser
 
-I used ChatGPT for assistance.
+## Tech
 
-**Change Log**
+HTML, CSS, vanilla JavaScript, built with [Vite](https://vitejs.dev/), deployed on [Vercel](https://vercel.com/).
 
-- Mar 31, 2024 - started project
-- Mar 31 - deployed on vercel with 404 error loading script.js
-- April 1 - script laoding error fixed by moving script.js to public folder, 
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Author
+
+Lana Zumbrunn
+
+## License
+
+[MIT](LICENSE)

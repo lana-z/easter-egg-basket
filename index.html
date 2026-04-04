@@ -4,63 +4,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Easter Basket</title>
+  <title>Easter Egg Hunt</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="/assets/egg-favicon.png" type="image/png">
 </head>
 
 <body>
 
-  <header>
-    <img src="assets/happy-easter.png" alt="Happy Easter">
-  </header>
-  <main>
-    <p>Collect as many eggs as you can </p>
-    <p>and</p> 
-    <p>click them to see if you got your favorite Easter candy!</p>
-    
-    <div class="button-container">
-      <button id="startButton">Start Game</button>
-    </div>
-    <div id="scoreBoard">
-      <p>Score: <span id="score">0</span></p>
-      <p>Round: <span id="round">1</span></p>
-    </div>
-    <div id="timer" class="timer-display">Time Left: -- seconds</div>
+  <header></header>
 
-    <div id="game">
-      <img class="egg" id="egg1" src="assets/egg1.png" draggable="true" alt="Egg 1">
-      <img class="egg" id="egg2" src="assets/egg2.png" draggable="true" alt="Egg 2">
-      <img class="egg" id="egg3" src="assets/egg3.png" draggable="true" alt="Egg 3">
-      <img class="egg" id="egg4" src="assets/egg4.png" draggable="true" alt="Egg 4">
-      <img class="egg" id="egg8" src="assets/egg8.png" draggable="true" alt="Egg 5">
-      <img class="egg" id="egg6" src="assets/egg6.png" draggable="true" alt="Egg 6">
-      <img class="egg" id="egg7" src="assets/egg7.png" draggable="true" alt="Egg 7">
-      <img class="egg" id="egg5" src="assets/egg5.png" draggable="true" alt="Egg 8">
+  <!-- HUD Bar -->
+  <div id="hud" class="hidden">
+    <span id="hud-score">Score: 0</span>
+    <span id="hud-round">Round 1/5</span>
+    <span id="hud-timer">Time: 20s</span>
+    <span id="hud-combo" class="hidden">x2</span>
+  </div>
 
-      <div class="basket-wrapper">
-        <div id="basket-image">
-          <img id="basket-img" src="assets/easter-basket-purple.png" alt="Basket">
-        </div>
-        <div id="basket">
-          <!-- Eggs go in basket here -->
-        </div>
-      </div>
-      <div id="egg-modal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p id="egg-content">Egg content goes here...</p>
-        </div>
-      </div>
+  <!-- Start Screen -->
+  <div id="start-screen">
+    <div class="start-content">
+      <img src="assets/happy-easter.png" alt="Happy Easter" class="card-logo">
+      <h1>Easter Egg Hunt</h1>
+      <p>Tap the eggs before they disappear!</p>
+      <p>Collect candy and see how many you can find.</p>
+      <p id="start-high-score" class="high-score hidden"></p>
+      <button id="start-button">Start hunt</button>
+      <br>
+      <a href="#" class="how-to-play-link">How to play</a>
     </div>
-    <p>Refresh the screen to get new eggs to keep looking for your favorite Easter candy.</p>
+  </div>
 
-  </main>
+  <!-- How To Play Overlay -->
+  <div id="how-to-play" class="hidden">
+    <div class="how-to-play-card">
+      <h2>How to play</h2>
+      <ul>
+        <li><strong>5 rounds</strong> of tapping eggs before they disappear</li>
+        <li>Each round gets harder: eggs vanish faster and more appear at once</li>
+        <li>Points per egg increase each round (10, 15, 20, 25, 30)</li>
+        <li><strong>Combo:</strong> collect eggs within 1 second for up to a 3x multiplier</li>
+        <li>Each egg gives you a random candy. Try to find all 14!</li>
+      </ul>
+      <a href="#" id="how-to-play-close">Got it</a>
+    </div>
+  </div>
+
+  <!-- Game Area -->
+  <div id="game">
+    <!-- Eggs are spawned dynamically by JS -->
+  </div>
+
+  <!-- Round Banner -->
+  <div id="round-banner" class="hidden">
+    <span id="round-banner-text">Round 1</span>
+  </div>
+
+  <!-- Basket Tray -->
+  <div id="basket-tray">
+    <div class="basket-wrapper">
+      <img id="basket-img" src="assets/easter-basket-purple.png" alt="Basket">
+      <div id="candy-collection"></div>
+    </div>
+  </div>
+
+  <!-- Game Over Overlay -->
+  <div id="game-over" class="hidden">
+    <div class="game-over-card">
+      <img src="assets/happy-easter.png" alt="Happy Easter" class="game-over-header">
+      <h2>Great hunting!</h2>
+      <p id="final-score">Score: 0</p>
+      <p id="eggs-collected-count">Eggs collected: 0</p>
+      <p id="game-over-high-score" class="high-score hidden"></p>
+      <h3 id="candy-found-label">Candy Found: 0 / 14</h3>
+      <div id="candy-grid"></div>
+      <button id="play-again-button">Play Again</button>
+      <button id="finish-button">Finish</button>
+      <br>
+      <a href="#" class="how-to-play-link">How to play</a>
+    </div>
+  </div>
+
+  <!-- Final Screen -->
+  <div id="final-screen" class="hidden">
+    <div class="final-content">
+      <img src="assets/happy-easter.png" alt="Happy Easter" class="final-logo">
+    </div>
+  </div>
+
   <script src="script.js"></script>
   <script type="module" src="/main.js"></script>
+
   <footer>
-    <p>© 2024 Easter Egg Hunt <a href="https://www.linkedin.com/in/lanazumbrunn/">by Lana Z</a></p>
+    <p>&copy; 2024 Easter Egg Hunt <a href="https://www.linkedin.com/in/lanazumbrunn/">by Lana Z</a></p>
   </footer>
+
 </body>
 
 </html>
